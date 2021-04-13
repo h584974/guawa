@@ -16,9 +16,15 @@ public class UserUtils {
 	
 	public static boolean isLoggedIn(HttpServletRequest request) {
 		
-		for(Cookie c : request.getCookies()) {
-			if(c.getName().equals("loginCookie"))
-				return true;
+		Cookie[] cookies = request.getCookies();
+		
+		if(cookies != null) {
+			
+			for(Cookie c : cookies) {
+				if(c != null && c.getName().equals("loginCookie"))
+					return true;
+			}
+			
 		}
 		
 		return false;
@@ -27,9 +33,15 @@ public class UserUtils {
 	
 	public static String getLoggedInUsername(HttpServletRequest request) {
 		
-		for(Cookie c : request.getCookies()) {
-			if(c.getName().equals("loginCookie"))
-				return c.getValue();
+		Cookie[] cookies = request.getCookies();
+		
+		if(cookies != null) {
+			
+			for(Cookie c : cookies) {
+				if(c != null && c.getName().equals("loginCookie"))
+					return c.getValue();
+			}
+			
 		}
 		
 		return null;
@@ -38,12 +50,18 @@ public class UserUtils {
 	
 	public static void logout(HttpServletRequest request, HttpServletResponse response) {
 		
-		for(Cookie c : request.getCookies()) {
+		Cookie[] cookies = request.getCookies();
+		
+		if(cookies != null) {
 			
-			if(c.getName().equals("loginCookie")) {
-				c.setMaxAge(0);
-				response.addCookie(c);
-				return;
+			for(Cookie c : request.getCookies()) {
+				
+				if(c.getName().equals("loginCookie")) {
+					c.setMaxAge(0);
+					response.addCookie(c);
+					return;
+				}
+				
 			}
 			
 		}
