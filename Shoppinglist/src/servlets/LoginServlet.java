@@ -22,7 +22,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		if(UserUtils.isLoggedIn(request)) {
-			response.sendRedirect("main-page");
+			response.sendRedirect("menu");
 		}
 		else {
 			request.getRequestDispatcher("WEB-INF/JSP/login.jsp").forward(request, response);;
@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		String username = request.getParameter("username");
-		String password = request.getParameter("username");
+		String password = request.getParameter("password");
 		
 		User user = username == null ? null : userDAO.findUserByUsername(username);
 		String message = "?m=";
@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
 		if(user != null) {
 			if(BCrypt.checkpw(password, user.getPassword())) {
 				UserUtils.login(response, username);
-				response.sendRedirect("main-page");
+				response.sendRedirect("menu");
 			}
 			else {
 				message += messages.LoginMessages.LOGIN_ERROR_PASSWORD;

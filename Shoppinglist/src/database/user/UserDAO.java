@@ -14,6 +14,10 @@ public class UserDAO {
 		return em.find(User.class, username);
 	}
 	
+	public void addUser(User user) {
+		em.persist(user);
+	}
+	
 	public void removeUser(User user) {
 		User u = em.merge(user);
 		em.remove(u);

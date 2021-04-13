@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import utils.BCrypt;
 
-@Entity
+@Entity(name = "User")
 @Table(schema = "guawa", name = "g_user")
 public class User {
 	

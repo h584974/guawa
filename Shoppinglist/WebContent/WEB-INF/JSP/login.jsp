@@ -4,7 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="CSS/my-styles.css" type="text/css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 <title>Login</title>
 </head>
 <body>
@@ -14,18 +16,30 @@
 	</div>
 	
 	<div class="container text-center text-dark">
+		<p class="center text-lg text-danger">${param.m}</p>
 		<form action="login" method="POST">
-			<div class="form-group">
-				<label for="username">Username: </label>
-				<input type="text" name="username" id="username" placeholder="username" class="form-control-lg">
-			</div>
-			<div class="form-group">
-				<label for="password">Password: </label>
-				<input type="password" name="password" id="password" placeholder="password" class="form-control-lg">
-			</div>
-			<button type="submit" class="btn btn-lg btn-light btn-outline-dark form-control-lg">Login</button>
+			<table class="center">
+				<tr>
+					<td class="right padding"><strong class="text-lg">Username: </strong></td>
+					<td><input type="text" name="username" placeholder="username" class="form-control-lg"></td>
+				</tr>
+				<tr>
+					<td class="right padding"><strong class="text-lg">Password: </strong></td>
+					<td><input type="password" name="password" placeholder="password" class="form-control-lg"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td class="padding-sm"><button type="submit" class="btn btn-lg btn-light btn-outline-dark form-control">Login</button></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td class="padding-sm"><button type="submit" form="create-account" class="btn btn-lg btn-light btn-outline-dark form-control">Create Account</button></td>
+				</tr>
+			</table>
 		</form>
 	</div>
+	
+	<form action="create-account" method="GET" id="create-account"></form>
 	
 </body>
 </html>
