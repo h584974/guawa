@@ -10,8 +10,8 @@ public class UserDAO {
 	@PersistenceContext(name = "guawaPU")
 	EntityManager em;
 	
-	public User findUserByUsername(String username) {
-		return em.find(User.class, username);
+	public User findUserByEmail(String email) {
+		return em.find(User.class, email);
 	}
 	
 	public void addUser(User user) {

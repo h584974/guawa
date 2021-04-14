@@ -2,8 +2,8 @@ package utils;
 
 public class UserValidator {
 	
-	public static boolean validUsername(String username) {
-		return username != null && username.matches("^[0-9a-zæøåA-ZÆØÅ]{3,20}$");
+	public static boolean validName(String name) {
+		return name != null && name.matches("^[a-zæøåA-ZÆØÅ]{1}[a-zæøåA-ZÆØÅ ]{0,63}$");
 	}
 	
 	public static boolean validPassword(String password) {

@@ -20,8 +20,8 @@
 		<form action="login" method="POST">
 			<table class="center">
 				<tr>
-					<td class="right padding"><strong class="text-lg">Username: </strong></td>
-					<td><input type="text" name="username" placeholder="username" class="form-control-lg"></td>
+					<td class="right padding"><strong class="text-lg">Email: </strong></td>
+					<td><input type="email" name="email" placeholder="email" class="form-control-lg"></td>
 				</tr>
 				<tr>
 					<td class="right padding"><strong class="text-lg">Password: </strong></td>

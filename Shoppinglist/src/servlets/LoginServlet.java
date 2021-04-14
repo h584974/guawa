@@ -34,15 +34,15 @@ public class LoginServlet extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		String username = request.getParameter("username");
+		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
-		User user = username == null ? null : userDAO.findUserByUsername(username);
+		User user = email == null ? null : userDAO.findUserByEmail(email);
 		String message = "?m=";
 		
 		if(user != null) {
 			if(BCrypt.checkpw(password, user.getPassword())) {
-				UserUtils.login(response, username);
+				UserUtils.login(response, email);
 				response.sendRedirect("menu");
 			}
 			else {

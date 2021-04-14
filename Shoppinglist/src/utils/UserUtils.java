@@ -6,9 +6,9 @@ import javax.servlet.http.HttpServletResponse;
 
 public class UserUtils {
 	
-	public static void login(HttpServletResponse response, String username) {
+	public static void login(HttpServletResponse response, String email) {
 		
-		Cookie loginCookie = new Cookie("loginCookie",username);
+		Cookie loginCookie = new Cookie("loginCookie",email);
 		loginCookie.setMaxAge(Config.USER_MAX_SECONDS_LOGGED_IN);
 		response.addCookie(loginCookie);
 		
@@ -21,7 +21,7 @@ public class UserUtils {
 		if(cookies != null) {
 			
 			for(Cookie c : cookies) {
-				if(c != null && c.getName().equals("loginCookie"))
+				if(c.getName().equals("loginCookie"))
 					return true;
 			}
 			
@@ -31,14 +31,14 @@ public class UserUtils {
 		
 	}
 	
-	public static String getLoggedInUsername(HttpServletRequest request) {
+	public static String getLoggedInEmail(HttpServletRequest request) {
 		
 		Cookie[] cookies = request.getCookies();
 		
 		if(cookies != null) {
 			
 			for(Cookie c : cookies) {
-				if(c != null && c.getName().equals("loginCookie"))
+				if(c.getName().equals("loginCookie"))
 					return c.getValue();
 			}
 			

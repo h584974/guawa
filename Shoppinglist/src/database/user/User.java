@@ -10,22 +10,32 @@ import utils.BCrypt;
 public class User {
 	
 	@Id
-	private String username;
+	private String email;
+	private String name;
 	private String password;
 	
 	public User() {}
-	
-	public User(String username, String password) {
-		this.username = username;
+
+	public User(String email, String name, String password) {
+		this.email = email;
+		this.name = name;
 		this.password = BCrypt.hashpw(password, BCrypt.gensalt(12));
 	}
 
-	public String getUsername() {
-		return username;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getPassword() {

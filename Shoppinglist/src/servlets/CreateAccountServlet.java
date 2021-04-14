@@ -30,13 +30,14 @@ public class CreateAccountServlet extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		String username = request.getParameter("username");
+		String email = request.getParameter("email");
+		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 		String password2 = request.getParameter("password");
 		String message = "?m=";
 		
-		if(!UserValidator.validUsername(username)) {
-			message += CreateUserMessages.INVALID_USERNAME;
+		if(!UserValidator.validName(name)) {
+			message += CreateUserMessages.INVALID_NAME;
 			response.sendRedirect("create-account" + message);
 		}
 		else if(!UserValidator.validPassword(password)) {
@@ -49,14 +50,14 @@ public class CreateAccountServlet extends HttpServlet {
 		}
 		else {
 			
-			User user = userDAO.findUserByUsername(username);
+			User user = userDAO.findUserByEmail(email);
 			
 			if(user != null) {
-				message += CreateUserMessages.USERNAME_TAKEN;
+				message += CreateUserMessages.EMAIL_USED;
 				response.sendRedirect("create-account" + message);
 			}
 			else {
-				User newUser = new User(username,password);
+				User newUser = new User(email,name,password);
 				userDAO.addUser(newUser);
 				message += CreateUserMessages.USER_CREATED;
 				response.sendRedirect("login" + message);
