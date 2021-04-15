@@ -8,6 +8,7 @@
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<jta-data-source>guawa-app</jta-data-source> 
 		<class>database.user.User</class>
+		<class>database.shoppinglist.Shoppinglist</class>
 		<properties>
 			<property name="eclipselink.weaving" value="false" />
 		</properties>

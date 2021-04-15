@@ -1,8 +1,13 @@
 package database.user;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import database.shoppinglist.Shoppinglist;
 import utils.BCrypt;
 
 @Entity(name = "User")
@@ -13,6 +18,9 @@ public class User {
 	private String email;
 	private String name;
 	private String password;
+	
+	@OneToMany(mappedBy = "owner")
+	private List<Shoppinglist> owned_shoppinglists;
 	
 	public User() {}
 
