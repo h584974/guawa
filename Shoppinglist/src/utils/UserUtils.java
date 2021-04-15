@@ -31,7 +31,8 @@ public class UserUtils {
 	
 	public static boolean isLoggedIn(HttpServletRequest request) {
 		
-		return request.getSession() != null && request.getAttribute("user") != null;
+		HttpSession session = request.getSession(false);
+		return session != null && session.getAttribute("user") != null;
 		
 	}
 	
