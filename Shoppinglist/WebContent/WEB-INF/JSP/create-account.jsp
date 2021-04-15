@@ -20,19 +20,19 @@
 		<form action="create-account" method="POST">
 			<table class="center">
 				<tr>
-					<td class="right padding"><strong class="text-lg">Email: </strong></td>
+					<td class="text-right padding"><strong class="text-lg">Email: </strong></td>
 					<td><input type="email" name="email" placeholder="email" class="form-control-lg"></td>
 				</tr>
 				<tr>
-					<td class="right padding"><strong class="text-lg">Name: </strong></td>
+					<td class="text-right padding"><strong class="text-lg">Name: </strong></td>
 					<td><input type="text" name="name" placeholder="name" class="form-control-lg"></td>
 				</tr>
 				<tr>
-					<td class="right padding"><strong class="text-lg">Password: </strong></td>
+					<td class="text-right padding"><strong class="text-lg">Password: </strong></td>
 					<td><input type="password" name="password" placeholder="password" class="form-control-lg"></td>
 				</tr>
 				<tr>
-					<td class="right padding"><strong class="text-lg">Repeat password: </strong></td>
+					<td class="text-right padding"><strong class="text-lg">Repeat password: </strong></td>
 					<td><input type="password" name="password2" placeholder="repeat password" class="form-control-lg"></td>
 				</tr>
 				<tr>

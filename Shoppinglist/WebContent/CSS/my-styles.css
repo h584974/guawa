@@ -5,8 +5,12 @@
 	margin-right: auto;
 }
 
-.right {
+.text-right {
 	text-align: right;
+}
+
+.text-left {
+	text-align: left;
 }
 
 .text-lg {
@@ -19,4 +23,12 @@
 
 .padding-sm {
 	padding: 5px;
+}
+
+.checkbox {
+	cursor: default;
+    appearance: checkbox;
+    box-sizing: border-box;
+    padding: 0;
+    
 }

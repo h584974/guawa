@@ -20,12 +20,16 @@
 		<form action="login" method="POST">
 			<table class="center">
 				<tr>
-					<td class="right padding"><strong class="text-lg">Email: </strong></td>
+					<td class="text-right padding"><strong class="text-lg">Email</strong></td>
 					<td><input type="email" name="email" placeholder="email" class="form-control-lg"></td>
 				</tr>
 				<tr>
-					<td class="right padding"><strong class="text-lg">Password: </strong></td>
+					<td class="text-right padding"><strong class="text-lg">Password</strong></td>
 					<td><input type="password" name="password" placeholder="password" class="form-control-lg"></td>
+				</tr>
+				<tr>
+					<td class="text-right padding"><strong class="text-lg">Remember me</strong></td>
+					<td class="padding-sm text-left"><input type="checkbox" name="remember" value="true" class="form-control"></td>
 				</tr>
 				<tr>
 					<td></td>

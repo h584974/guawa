@@ -21,7 +21,13 @@ public class LoginServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		if(UserUtils.isLoggedIn(request)) {
+		UserUtils.logout(request);
+		
+		String rememberedEmail = UserUtils.getRememberedUserEmail(request);
+		User rememberedUser = rememberedEmail == null ? null : userDAO.findUserByEmail(rememberedEmail);
+		
+		if(rememberedUser != null) {
+			UserUtils.login(request, rememberedUser);
 			response.sendRedirect("menu");
 		}
 		else {
@@ -36,13 +42,18 @@ public class LoginServlet extends HttpServlet {
 		
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+		String remember = request.getParameter("remember");
 		
 		User user = email == null ? null : userDAO.findUserByEmail(email);
 		String message = "?m=";
 		
 		if(user != null) {
 			if(BCrypt.checkpw(password, user.getPassword())) {
-				UserUtils.login(response, email);
+				
+				if(remember != null && !remember.isBlank())
+					UserUtils.rememberUser(response, email);
+				
+				UserUtils.login(request, user);
 				response.sendRedirect("menu");
 			}
 			else {
