@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import database.user.User;
 import database.user.UserDAO;
 import utils.BCrypt;
-import utils.UserUtils;
+import static utils.UserUtils.*;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
@@ -21,13 +21,13 @@ public class LoginServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		UserUtils.logout(request);
+		logout(request);
 		
-		String rememberedEmail = UserUtils.getRememberedUserEmail(request);
+		String rememberedEmail = getRememberedUserEmail(request);
 		User rememberedUser = rememberedEmail == null ? null : userDAO.findUserByEmail(rememberedEmail);
 		
 		if(rememberedUser != null) {
-			UserUtils.login(request, rememberedUser);
+			login(request, rememberedUser);
 			response.sendRedirect("menu");
 		}
 		else {
@@ -51,9 +51,9 @@ public class LoginServlet extends HttpServlet {
 			if(BCrypt.checkpw(password, user.getPassword())) {
 				
 				if(remember != null && !remember.isBlank())
-					UserUtils.rememberUser(response, email);
+					rememberUser(response, email);
 				
-				UserUtils.login(request, user);
+				login(request, user);
 				response.sendRedirect("menu");
 			}
 			else {

@@ -7,11 +7,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import database.user.User;
 import database.user.UserDAO;
 import messages.CreateUserMessages;
-import utils.UserValidator;
+import static utils.UserValidator.*;
 
 @WebServlet("/create-account")
 public class CreateAccountServlet extends HttpServlet {
@@ -36,11 +35,11 @@ public class CreateAccountServlet extends HttpServlet {
 		String password2 = request.getParameter("password");
 		String message = "?m=";
 		
-		if(!UserValidator.validName(name)) {
+		if(!validName(name)) {
 			message += CreateUserMessages.INVALID_NAME;
 			response.sendRedirect("create-account" + message);
 		}
-		else if(!UserValidator.validPassword(password)) {
+		else if(!validPassword(password)) {
 			message += CreateUserMessages.INVALID_PASSWORD;
 			response.sendRedirect("create-account" + message);
 		}

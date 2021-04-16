@@ -36,6 +36,12 @@ public class UserUtils {
 		
 	}
 	
+	public static User getLoggedInUser(HttpServletRequest request) {
+		
+		return (User) request.getSession().getAttribute("user");
+		
+	}
+	
 	public static void rememberUser(HttpServletResponse response, String email) {
 		
 		Cookie cookie = new Cookie("remember",email);
