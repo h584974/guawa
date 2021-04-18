@@ -1,6 +1,8 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -12,6 +14,7 @@ import database.user.User;
 import database.user.UserDAO;
 import static utils.UserUtils.*;
 import database.shoppinglist.Shoppinglist;
+import database.shoppinglist.ShoppinglistDAO;
 
 @WebServlet("/menu")
 public class MenuServlet extends HttpServlet {
@@ -19,13 +22,15 @@ public class MenuServlet extends HttpServlet {
 	
 	@EJB
 	private UserDAO userDAO;
+	
+	@EJB
+	private ShoppinglistDAO shoppinglistDAO;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		if(isLoggedIn(request)) {
 			User user = getLoggedInUser(request);
-			List<Shoppinglist> ownedShoppinglists = user == null ? null : user.getOwnedShoppinglists();
-			
+			List<Shoppinglist> ownedShoppinglists = user.getOwnedShoppinglists();
 			request.setAttribute("ownedShoppinglists", ownedShoppinglists);
 			request.getRequestDispatcher("WEB-INF/JSP/menu.jsp").forward(request, response);
 		}

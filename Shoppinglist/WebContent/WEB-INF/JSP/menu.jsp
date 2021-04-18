@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +17,16 @@
 	</div>
 	
 	<div class="container text-center text-dark">
-	
+		<form action="menu" method="POST">
+			<div class="row">
+				<c:forEach items="${ownedShoppinglists}" var="list">
+					<div class="col-sm-4">
+						<h2>${list.title}</h2>
+						<p>This is a shoppinglist</p>
+					</div>
+				</c:forEach>
+			</div>
+		</form>
 	</div>
 	
 </body>
