@@ -17,11 +17,18 @@
 	</div>
 	
 	<div class="container text-center text-dark">
+		<div class="row">
+			<div class="col-lg-6"><h2>My lists</h2></div>
+			<div class="col-lg-6"><h2>My lists</h2></div>
+		</div>
+		
+		<br><br>
+		
 		<form action="menu" method="POST">
 			<div class="row">
 				<c:forEach items="${ownedShoppinglists}" var="list">
-					<div class="col-sm-4">
-						<h2>${list.title}</h2>
+					<div class="col-lg-3">
+						<h5>${list.title}</h5>
 						<p>This is a shoppinglist</p>
 					</div>
 				</c:forEach>
